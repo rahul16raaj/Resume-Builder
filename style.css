@@ -1,0 +1,570 @@
+:root {
+    --primary-blue: #0056b3;
+    --primary-blue-light: #e6f0fa;
+    --secondary-blue: #004494;
+    --white: #ffffff;
+    --light-gray: #f4f7f6;
+    --border-color: #dce1e6;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --danger: #dc3545;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.app-header {
+    background-color: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.app-header h1 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.template-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.template-selector label {
+    margin-bottom: 0;
+}
+
+.template-selector select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-blue);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px dashed var(--primary-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-blue-light);
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.editor-section {
+    width: 45%;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+}
+
+.preview-section {
+    width: 55%;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #525659;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Form Styles */
+.form-container h2 {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    border-bottom: 2px solid var(--primary-blue-light);
+    padding-bottom: 0.5rem;
+}
+
+.form-container h2:first-child {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.col {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px var(--primary-blue-light);
+}
+
+.add-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.entry-card {
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    position: relative;
+    background-color: var(--light-gray);
+}
+
+.remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Resume Preview Wrapper */
+.resume-wrapper {
+    width: 21cm; /* A4 width */
+    min-height: 29.7cm; /* A4 height */
+    background: var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+/* Base Resume Styles */
+.resume-preview {
+    width: 100%;
+    height: 100%;
+    padding: 2cm;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.5;
+}
+
+.resume-preview h1, .resume-preview h2, .resume-preview h3 {
+    margin: 0;
+}
+
+.resume-preview p {
+    margin: 0 0 0.5rem 0;
+}
+
+.resume-section {
+    margin-bottom: 1.5rem;
+}
+
+.bullet-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.bullet-list li {
+    margin-bottom: 0.25rem;
+}
+
+/* =========================================
+   TEMPLATE: ATTRACTIVE (Blue & White)
+========================================= */
+.template-attractive {
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background: white;
+}
+
+.template-attractive .resume-header {
+    background-color: #5a7bd2;
+    color: white;
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 
+        "initials name"
+        "initials contact";
+    column-gap: 1.5rem;
+    align-items: center;
+    margin: 0;
+}
+
+.template-attractive .header-content {
+    display: contents;
+}
+
+.template-attractive .initials-circle {
+    grid-area: initials;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid white;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.template-attractive .name-title-container {
+    display: contents;
+}
+
+.template-attractive #preview-name {
+    grid-area: name;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    line-height: 1.1;
+    color: white;
+}
+
+.template-attractive #preview-name::before {
+    content: none;
+}
+
+.template-attractive #preview-title {
+    display: none;
+}
+
+.template-attractive .contact-info {
+    grid-area: contact;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: white;
+}
+
+.template-attractive .contact-item {
+    color: white;
+}
+
+.template-attractive .contact-separator {
+    margin: 0 0.4rem;
+}
+
+.template-attractive .icon {
+    display: none;
+}
+
+.template-attractive .resume-body {
+    padding: 2.5rem 3rem;
+}
+
+.template-attractive .resume-section {
+    margin-bottom: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #dce1e6;
+}
+
+.template-attractive .resume-section:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.template-attractive .resume-section h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5a7bd2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+
+.template-attractive .section-content {
+    width: 100%;
+}
+
+.template-attractive .entry-card-preview {
+    margin-bottom: 1.2rem;
+}
+
+.template-attractive .entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.4rem;
+}
+
+.template-attractive .entry-left {
+    display: flex;
+    align-items: baseline;
+}
+
+.template-attractive .entry-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.template-attractive .entry-separator {
+    color: #666;
+    margin: 0 0.3rem;
+}
+
+.template-attractive .entry-company {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.template-attractive .entry-company-full {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.2rem;
+}
+
+.template-attractive .entry-date {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.template-attractive .skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    list-style-type: disc;
+    padding-left: 1.2rem;
+}
+
+
+/* =========================================
+   TEMPLATE: PLAIN (Classic Minimalist)
+========================================= */
+.template-plain {
+    padding: 2.5cm;
+    background: white;
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+}
+
+.template-plain .resume-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.template-plain .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.template-plain .initials-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.template-plain #preview-name {
+    font-size: 2.2rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.template-plain #preview-title {
+    display: none;
+}
+
+.template-plain .contact-info {
+    font-size: 0.85rem;
+    color: #555;
+    font-family: 'Inter', sans-serif;
+}
+
+.template-plain .icon {
+    display: none;
+}
+
+.template-plain .resume-section {
+    margin-bottom: 1.5rem;
+}
+
+.template-plain .resume-section h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.2rem;
+}
+
+.template-plain .resume-section h3::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    margin-left: 1rem;
+}
+
+/* 2-column layout for Experience and Education */
+.template-plain #section-experience .entry-card-preview,
+.template-plain #section-education .entry-card-preview,
+.template-plain #section-projects .entry-card-preview {
+    display: flex;
+    margin-bottom: 1.2rem;
+}
+
+.template-plain .entry-meta {
+    width: 35%;
+    padding-right: 1.5rem;
+}
+
+.template-plain .entry-desc {
+    width: 65%;
+}
+
+/* Stacking left column meta */
+.template-plain .entry-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.template-plain .entry-company {
+    color: #555;
+    font-size: 0.95rem;
+    order: 1;
+}
+
+.template-plain .entry-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin: 0.2rem 0;
+    order: 2;
+}
+
+.template-plain .entry-date {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    order: 3;
+}
+
+.template-plain .skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    list-style-type: disc;
+    padding-left: 1.2rem;
+}
+
+/* Formatted lists for both templates */
+.bullet-list li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+.close-btn:hover {
+    color: #000;
+}
